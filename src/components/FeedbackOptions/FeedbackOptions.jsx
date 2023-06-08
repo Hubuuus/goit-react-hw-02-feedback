@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import { Component } from "react";
+import css from "./FeedbackOptions.module.css";
 
 export class FeedbackOptions extends Component {
   render() {
     const { options, onLeaveFeedback } = this.props;
     return (
-      <ul>
+      <ul className={css.ListBtn}>
         {options.map(option => (
-          <button type='submit' key={option} name={option} onClick={onLeaveFeedback}>
+          <button className={css.Btn} type='submit' key={option} name={option} onClick={onLeaveFeedback}>
             {option}
           </button>
         ))}
