@@ -5,7 +5,7 @@ import { Section } from "./Section/Section";
 import { Statistics } from "./Statistics/Statistics";
 import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
 import { Notification } from "./Notification/Notification";
-import  css  from "./App.module.css";
+import css from "./App.module.css";
 
 export class App extends Component {
   state = {
@@ -29,21 +29,11 @@ export class App extends Component {
     }));
   };
 
-  // onLeaveFeedback = ev => {
-  //   this.setState(prevState => ({
-  //     [ev]: prevState[ev] + 1,
-  //   }));
-  //   console.log(this.state);
-  //   this.countTotalFeedback();
-  //   this.countPositiveFeedbackPercentage();
-  // };
-
-  onLeaveFeedback = e => {
-    const { name } = e.target;
+  onLeaveFeedback = options => {
     this.setState(prevState => ({
-      [name]: prevState[name] + 1,
+      [options]: prevState[options] + 1,
     }));
-    // console.log(this.state);
+    console.log(this.state);
     this.countTotalFeedback();
     this.countPositiveFeedbackPercentage();
   };
@@ -56,8 +46,8 @@ export class App extends Component {
           <FeedbackOptions options={options} onLeaveFeedback={this.onLeaveFeedback} />
         </Section>
         <Section title='Statistics'>
-          {this.state.total === 0  ? (
-            <Notification message='There is no feedback'/>
+          {this.state.total === 0 ? (
+            <Notification message='There is no feedback' />
           ) : (
             <Statistics
               good={this.state.good}
